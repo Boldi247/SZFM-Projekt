@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
@@ -36,7 +41,7 @@
           <Menu mnemonicParsing="false" text="Fájl">
             <items>
                   <MenuItem mnemonicParsing="false" text="Exportálás" />
-              <MenuItem mnemonicParsing="false" text="Kilépés" />
+              <MenuItem mnemonicParsing="false" onAction="#onExit" text="Kilépés" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Fiók">
@@ -46,5 +51,33 @@
           </Menu>
         </menus>
       </MenuBar>
+      <VBox layoutX="375.0" layoutY="87.0" prefHeight="101.0" prefWidth="217.0">
+         <children>
+            <Label text="Összes villanydíj">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <StackPane prefHeight="5.0" prefWidth="217.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+               </children>
+            </StackPane>
+            <Label text="Összes gázdíj">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <StackPane prefHeight="5.0" prefWidth="217.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+      <Button layoutX="452.0" layoutY="210.0" mnemonicParsing="false" onAction="#calculate" text="Szamítás" />
+      <Button layoutX="400.0" layoutY="251.0" mnemonicParsing="false" text="Részletes megjelenítés (PDF)" />
    </children>
 </AnchorPane>

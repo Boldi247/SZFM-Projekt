@@ -7,6 +7,12 @@ public class DataModel {
     private int piaciarGaz;
     private int csokkentettarGaz;
 
+    private int inputHaviAramA;
+    private int inputHaviAramB;
+    private int inputHaviGaz;
+    private int inputGyerekSzam;
+    private String inputHonap;
+
     public int getCsokkentettarAram() {
         return csokkentettarAram;
     }
@@ -33,5 +39,37 @@ public class DataModel {
     }
     public void setPiaciarGaz(int piaciarGaz) {
         this.piaciarGaz = piaciarGaz;
+    }
+
+    public int getInputGyerekSzam() {
+        return inputGyerekSzam;
+    }
+    public int getInputHaviAramA() {
+        return inputHaviAramA;
+    }
+    public int getInputHaviAramB() {
+        return inputHaviAramB;
+    }
+    public int getInputHaviGaz() {
+        return inputHaviGaz;
+    }
+    public String getInputHonap() {
+        return inputHonap;
+    }
+
+    public void setInputGyerekSzam(int inputGyerekSzam) {
+        this.inputGyerekSzam = inputGyerekSzam;
+    }
+    public void setInputHaviAramA(int inputHaviAramA) {
+        this.inputHaviAramA = inputHaviAramA;
+    }
+    public void setInputHaviAramB(int inputHaviAramB) {
+        this.inputHaviAramB = inputHaviAramB;
+    }
+    public void setInputHaviGaz(int inputHaviGaz) {
+        this.inputHaviGaz = inputHaviGaz;
+    }
+    public void setInputHonap(String inputHonap) {
+        this.inputHonap = inputHonap;
     }
 }
