@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class opening_scene extends Application {
+public class OpeningScene extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/opening_scene.fxml"));
         stage.setTitle("Rezsi kalkulátor");

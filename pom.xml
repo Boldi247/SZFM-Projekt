@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                view.application
+                                view.App
                             </mainClass>
                         </configuration>
                     </execution>
