@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rezsi Kalkulátor" textAlignment="CENTER" wrappingWidth="227.13671875" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Text>
-   </top>
-   <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <children>
+      <VBox layoutX="14.0" layoutY="56.0" prefHeight="162.0" prefWidth="223.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi áramfogyasztás - kWh" />
-            <TextField />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi gázfogyasztás - köbméter" />
-            <TextField />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dátum beállítása" />
-            <DatePicker />
-            <CheckBox mnemonicParsing="false" text="Nagycsaládos" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi áramfogyasztás (A tarifa - &quot;nappali&quot;)" />
+            <TextField fx:id="aram_a_tarifa" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi áramfogyasztás (B tarifa - éjjeli áram)" />
+            <TextField fx:id="aram_b_tarifa" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi gázfogyasztás (m³)" />
+            <TextField fx:id="gaz_fogyasztas" />
+            <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Amennyiben valamit nem fogyaszt, kérem gépeljen be oda egy &quot;0&quot;-t!" textAlignment="CENTER" wrappingWidth="223.0" />
          </children>
       </VBox>
-   </left>
-</BorderPane>
+      <VBox layoutX="14.0" layoutY="263.0" prefHeight="178.0" prefWidth="223.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nevelt gyermekek száma" />
+            <Spinner fx:id="gyermek_db" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hónap" />
+            <ChoiceBox fx:id="honapok" prefWidth="150.0" />
+         </children>
+      </VBox>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fájl">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Exportálás" />
+              <MenuItem mnemonicParsing="false" text="Kilépés" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Fiók">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
