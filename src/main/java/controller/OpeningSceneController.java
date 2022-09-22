@@ -15,6 +15,12 @@ public class OpeningSceneController {
     public DataModel dataModel = new DataModel();
 
     @FXML
+    public TextField piaciar_aram_b;
+
+    @FXML
+    public TextField csokkentettar_aram_b;
+
+    @FXML
     private TextField csokkentettar_aram;
 
     @FXML
