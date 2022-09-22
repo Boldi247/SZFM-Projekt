@@ -1,6 +1,13 @@
 package model;
 
 public class DataModel {
+
+    //TODO - valós árak beírása
+    private final int def_aram_p = 10;
+    private final int def_aram_cs = 10;
+    private final int def_gaz_p = 10;
+    private final int def_gaz_cs = 10;
+
     private int piaciarAram;
     private int csokkentettarAram;
 
@@ -12,6 +19,19 @@ public class DataModel {
     private int inputHaviGaz;
     private int inputGyerekSzam;
     private String inputHonap;
+
+    public int getDef_aram_cs() {
+        return def_aram_cs;
+    }
+    public int getDef_aram_p() {
+        return def_aram_p;
+    }
+    public int getDef_gaz_cs() {
+        return def_gaz_cs;
+    }
+    public int getDef_gaz_p() {
+        return def_gaz_p;
+    }
 
     public int getCsokkentettarAram() {
         return csokkentettarAram;
