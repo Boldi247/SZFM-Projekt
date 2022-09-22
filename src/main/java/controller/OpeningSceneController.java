@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class OpeningSceneController {
 
-    DataModel dataModel = new DataModel();
+    public DataModel dataModel = new DataModel();
 
     @FXML
     private TextField csokkentettar_aram;
@@ -32,7 +32,7 @@ public class OpeningSceneController {
     }
 
     @FXML
-    void onNext(ActionEvent event) throws IOException {
+    public void onNext(ActionEvent event) throws IOException {
         try {
             dataModel.setCsokkentettarAram(Integer.parseInt(csokkentettar_aram.getText()));
             dataModel.setPiaciarAram(Integer.parseInt(piaciar_aram.getText()));

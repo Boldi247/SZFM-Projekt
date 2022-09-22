@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController extends OpeningSceneController implements Initializable{
     @FXML
     private TextField aram_a_tarifa;
     @FXML
@@ -37,6 +37,11 @@ public class MainController implements Initializable {
 
     public void calculate(ActionEvent event) {
         if (checkIfUserGaveCorrectInput()) {
+            System.out.println(dataModel.getInputHaviAramA());
+            System.out.println(dataModel.getInputHaviAramB());
+            System.out.println(dataModel.getInputHaviGaz());
+            System.out.println(dataModel.getInputGyerekSzam());
+            System.out.println(dataModel.getInputHonap());
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -50,11 +55,11 @@ public class MainController implements Initializable {
     private boolean checkIfUserGaveCorrectInput() {
         if (aram_a_tarifa.getText().isEmpty() || aram_b_tarifa.getText().isEmpty() || gaz_fogyasztas.getText().isEmpty()) return false;
         try {
-            //TODO!!
-            //Át kellene konvertáltatni a textboxokból lekért számokat integerré, és azokat a DataModel classban tárolni
-            //Új DataModel példányt nem készíthetünk, mert akkor elvesznek az első Scene-en bekért adatok (piaci ár, rezsicsökkentett ár)
-            //Amennyiben nem tudjuk átkonvertálni a szöveget integer-ré, akkor false-t kell adnia a függvénynek, ugyanis akkor a
-            //felhasználó valószínűleg betűket is írt az input ablakba.
+            dataModel.setInputHaviAramA(Integer.parseInt(aram_a_tarifa.getText()));
+            dataModel.setInputHaviAramB(Integer.parseInt(aram_b_tarifa.getText()));
+            dataModel.setInputHaviGaz(Integer.parseInt(gaz_fogyasztas.getText()));
+            dataModel.setInputGyerekSzam(gyermek_db.getValue());
+            dataModel.setInputHonap(honapok.getValue());
         } catch (NumberFormatException e) {
             return false;
         }
