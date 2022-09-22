@@ -15,16 +15,16 @@ public class OpeningSceneController {
     DataModel dataModel = new DataModel();
 
     @FXML
-    TextField csokkentettar_aram;
+    private TextField csokkentettar_aram;
 
     @FXML
-    TextField piaciar_aram;
+    private TextField piaciar_aram;
 
     @FXML
-    TextField csokkentettar_gaz;
+    private TextField csokkentettar_gaz;
 
     @FXML
-    TextField piaciar_gaz;
+    private TextField piaciar_gaz;
 
     @FXML
     void onExit() {
