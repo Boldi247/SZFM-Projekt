@@ -21,16 +21,16 @@ public class OpeningSceneController {
     public TextField csokkentettar_aram_b;
 
     @FXML
-    private TextField csokkentettar_aram;
+    public TextField csokkentettar_aram;
 
     @FXML
-    private TextField piaciar_aram;
+    public TextField piaciar_aram;
 
     @FXML
-    private TextField csokkentettar_gaz;
+    public TextField csokkentettar_gaz;
 
     @FXML
-    private TextField piaciar_gaz;
+    public TextField piaciar_gaz;
 
     @FXML
     void onExit() {
@@ -41,13 +41,20 @@ public class OpeningSceneController {
     public void onNext(ActionEvent event) throws IOException {
 
         try {
-            if (csokkentettar_aram.getText().isEmpty() || piaciar_aram.getText().isEmpty() || csokkentettar_gaz.getText().isEmpty() || piaciar_gaz.getText().isEmpty()) {
-                saveInput(dataModel.getDef_aram_p(), dataModel.getDef_aram_cs(), dataModel.getDef_gaz_p(), dataModel.getDef_gaz_cs());
+            if (csokkentettar_aram.getText().isEmpty() || piaciar_aram.getText().isEmpty() || csokkentettar_gaz.getText().isEmpty() || piaciar_gaz.getText().isEmpty() || piaciar_aram_b.getText().isEmpty() || csokkentettar_aram_b.getText().isEmpty()) {
+                saveInput(dataModel.getDef_aram_p(),dataModel.getDef_aram_cs(), dataModel.getDef_aram_b_p(), dataModel.getDef_aram_b_cs(), dataModel.getDef_gaz_p(), dataModel.getDef_gaz_cs());
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Egy vagy több mezőt üresen hagyott: A program alapértelmezett értékekkel fog számolni!");
                 alert.setTitle("Alapértelmezett értékek");
                 alert.setResizable(false);
                 alert.show();
+
+                System.out.println(dataModel.getCsokkentettarAram());
+                System.out.println(dataModel.getPiaciarAram());
+                System.out.println(dataModel.getCsokkentettarAram_B());
+                System.out.println(dataModel.getPiaciarAram_B());
+                System.out.println(dataModel.getCsokkentettarGaz());
+                System.out.println(dataModel.getPiaciarGaz());
             }
             else {
                 saveInput();
@@ -67,12 +74,16 @@ public class OpeningSceneController {
         dataModel.setPiaciarAram(Integer.parseInt(piaciar_aram.getText()));
         dataModel.setCsokkentettarGaz(Integer.parseInt(csokkentettar_gaz.getText()));
         dataModel.setPiaciarGaz(Integer.parseInt(piaciar_gaz.getText()));
+        dataModel.setCsokkentettarAram_B(Integer.parseInt(csokkentettar_aram_b.getText()));
+        dataModel.setPiaciarAram_B(Integer.parseInt(piaciar_aram_b.getText()));
     }
 
-    private void saveInput(int def_aram_p, int def_aram_cs, int def_gaz_p, int def_gaz_cs) {
+    private void saveInput(int def_aram_p, int def_aram_cs, int def_aram_b_p, int def_aram_b_cs, int def_gaz_p, int def_gaz_cs) {
         dataModel.setCsokkentettarAram(def_aram_cs);
         dataModel.setPiaciarAram(def_aram_p);
         dataModel.setCsokkentettarGaz(def_gaz_cs);
         dataModel.setPiaciarGaz(def_gaz_p);
+        dataModel.setCsokkentettarAram_B(def_aram_b_cs);
+        dataModel.setPiaciarAram_B(def_aram_b_p);
     }
 }

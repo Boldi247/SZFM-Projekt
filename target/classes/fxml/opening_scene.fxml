@@ -15,16 +15,20 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <VBox layoutX="145.0" layoutY="179.0" prefHeight="112.0" prefWidth="305.0">
+      <VBox layoutX="120.0" layoutY="108.0" prefHeight="249.0" prefWidth="361.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia piaci árát (Ft/kWh)" textAlignment="CENTER" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (nappali) piaci árát (Ft/kWh)" textAlignment="CENTER" />
             <TextField fx:id="piaciar_aram" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia rezsicsökkentett árrát (Ft/kWh)" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (nappali) rezsicsökkentett árrát (Ft/kWh)" />
             <TextField fx:id="csokkentettar_aram" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (esti) piaci árát (Ft/kWh)" />
+            <TextField fx:id="piaciar_aram_b" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (esti) rezsicsökkentett árrát (Ft/kWh)" />
+            <TextField fx:id="csokkentettar_aram_b" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz piaci árát (Ft/m³)" />
             <PasswordField fx:id="piaciar_gaz" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz rezsicsökkentett árát (Ft/m³)" />
-            <TextField fx:id="csokkentettar_gaz" />
+            <TextField fx:id="csokkentettar_gaz" prefWidth="361.0" />
          </children>
       </VBox>
       <Button layoutX="143.0" layoutY="384.0" mnemonicParsing="false" onAction="#onExit" prefHeight="33.0" prefWidth="108.0" text="Kilépés" />

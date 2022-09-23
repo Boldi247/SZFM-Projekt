@@ -42,6 +42,13 @@ public class MainController extends OpeningSceneController implements Initializa
             System.out.println(dataModel.getInputHaviGaz());
             System.out.println(dataModel.getInputGyerekSzam());
             System.out.println(dataModel.getInputHonap());
+            System.out.println(dataModel.getCsokkentettarAram());
+            System.out.println(dataModel.getPiaciarAram());
+            System.out.println(dataModel.getCsokkentettarAram_B());
+            System.out.println(dataModel.getPiaciarAram_B());
+            System.out.println(dataModel.getCsokkentettarGaz());
+            System.out.println(dataModel.getPiaciarGaz());
+            System.out.println();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

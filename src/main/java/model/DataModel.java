@@ -3,13 +3,17 @@ package model;
 public class DataModel {
 
     //TODO - valós árak beírása
-    private final int def_aram_p = 10;
-    private final int def_aram_cs = 10;
-    private final int def_gaz_p = 10;
-    private final int def_gaz_cs = 10;
+    private final int def_aram_p = 70;
+    private final int def_aram_cs = 37;
+    private final int def_gaz_p = 747;
+    private final int def_gaz_cs = 102;
+    private final int def_aram_b_p = 63;
+    private final int def_aram_b_cs = 23;
 
     private int piaciarAram;
     private int csokkentettarAram;
+    private int piaciarAram_B;
+    private int csokkentettarAram_B;
 
     private int piaciarGaz;
     private int csokkentettarGaz;
@@ -32,12 +36,25 @@ public class DataModel {
     public int getDef_gaz_p() {
         return def_gaz_p;
     }
+    public int getDef_aram_b_cs() {
+        return def_aram_b_cs;
+    }
+    public int getDef_aram_b_p() {
+        return def_aram_b_p;
+    }
 
     public int getCsokkentettarAram() {
         return csokkentettarAram;
     }
     public int getPiaciarAram() {
         return piaciarAram;
+    }
+
+    public int getCsokkentettarAram_B() {
+        return csokkentettarAram_B;
+    }
+    public int getPiaciarAram_B() {
+        return piaciarAram_B;
     }
 
     public int getCsokkentettarGaz() {
@@ -52,6 +69,13 @@ public class DataModel {
     }
     public void setPiaciarAram(int piaciarAram) {
         this.piaciarAram = piaciarAram;
+    }
+
+    public void setCsokkentettarAram_B(int csokkentettarAram_B) {
+        this.csokkentettarAram_B = csokkentettarAram_B;
+    }
+    public void setPiaciarAram_B(int piaciarAram_B) {
+        this.piaciarAram_B = piaciarAram_B;
     }
 
     public void setCsokkentettarGaz(int csokkentettarGaz) {
