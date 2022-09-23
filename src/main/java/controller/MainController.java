@@ -4,13 +4,17 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import model.DataModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable{
+public class MainController implements Initializable {
     @FXML
     private TextField aramTarifa_A;
     @FXML
@@ -39,15 +43,18 @@ public class MainController implements Initializable{
         "December"
     };
 
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        int gyermekSzamMax = 15;
+
         honapValaszto.getItems().addAll(honapValasztoErtekek);
         honapValaszto.setValue(honapValasztoErtekek[0]);
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,15);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, gyermekSzamMax);
         gyermekSzamValaszto.setValueFactory(valueFactory);
     }
 
-    public void onExit(ActionEvent event) {
+    public void onExit() {
         Platform.exit();
     }
 
@@ -105,7 +112,7 @@ public class MainController implements Initializable{
         int aramCsokkentettAr_B,
         int gazPiaciAr,
         int gazCsokkentettAr
-    ){
+    ) {
         dataModel.setAramPiaciAr(aramPiaciAr);
         dataModel.setAramCsokkentettAr(aramCsokkentettAr);
         dataModel.setAramPiaciAr_B(aramPiaciAr_B);

@@ -9,37 +9,35 @@ import model.DataModel;
 
 import java.io.IOException;
 
-
 public class OpeningSceneController {
-
     @FXML
-    public TextField aramPiaciAr_B;
+    private TextField aramPiaciAr_B;
     private int aramPiaciAr_B_Ertek;
 
     @FXML
-    public TextField aramCsokkentettAr_B;
+    private TextField aramCsokkentettAr_B;
     private int aramCsokkentettAr_B_Ertek;
 
     @FXML
-    public TextField aramPiaciAr;
+    private TextField aramPiaciAr;
     private int aramPiaciAr_Ertek;
 
     @FXML
-    public TextField aramCsokkentettAr;
+    private TextField aramCsokkentettAr;
     private int aramCsokkentettAr_Ertek;
 
     @FXML
-    public TextField gazPiaciAr;
+    private TextField gazPiaciAr;
     private int gazPiaciAr_Ertek;
 
     @FXML
-    public TextField gazCsokkentettAr;
+    private TextField gazCsokkentettAr;
     private int gazCsokkentettAr_Ertek;
 
     private final SceneController sceneController = new SceneController();
 
     @FXML
-    void onExit() {
+    public void onExit() {
         Platform.exit();
     }
 
@@ -72,8 +70,7 @@ public class OpeningSceneController {
                 alert.setTitle("Alapértelmezett értékek");
                 alert.setResizable(false);
                 alert.show();
-            }
-            else {
+            } else {
                 setValues();
 
                 mainController.saveDataFromFirstScene(
