@@ -5,11 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import model.DataModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController extends OpeningSceneController implements Initializable{
+public class MainController implements Initializable{
     @FXML
     private TextField aram_a_tarifa;
     @FXML
@@ -21,6 +22,8 @@ public class MainController extends OpeningSceneController implements Initializa
     @FXML
     private ChoiceBox<String> honapok;
 
+    private final DataModel dataModel = new DataModel();
+
     private final String[] honapokContent = {"Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"};
 
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -31,24 +34,16 @@ public class MainController extends OpeningSceneController implements Initializa
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0,15);
         valueFactory.setValue(0);
         gyermek_db.setValueFactory(valueFactory);
+
+
     }
 
     public void onExit(ActionEvent event) {Platform.exit();}
 
     public void calculate(ActionEvent event) {
         if (checkIfUserGaveCorrectInput()) {
-            System.out.println(dataModel.getInputHaviAramA());
-            System.out.println(dataModel.getInputHaviAramB());
-            System.out.println(dataModel.getInputHaviGaz());
-            System.out.println(dataModel.getInputGyerekSzam());
-            System.out.println(dataModel.getInputHonap());
-            System.out.println(dataModel.getCsokkentettarAram());
-            System.out.println(dataModel.getPiaciarAram());
-            System.out.println(dataModel.getCsokkentettarAram_B());
-            System.out.println(dataModel.getPiaciarAram_B());
-            System.out.println(dataModel.getCsokkentettarGaz());
-            System.out.println(dataModel.getPiaciarGaz());
-            System.out.println();
+
+            //TODO
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -71,5 +66,14 @@ public class MainController extends OpeningSceneController implements Initializa
             return false;
         }
         return true;
+    }
+
+    public void saveDataFromFirstScene(int aram_a_p, int aram_a_cs, int aram_b_p, int aram_b_cs, int gaz_p, int gaz_cs){
+        dataModel.setCsokkentettarAram(aram_a_cs);
+        dataModel.setPiaciarAram(aram_a_p);
+        dataModel.setCsokkentettarGaz(gaz_cs);
+        dataModel.setPiaciarGaz(gaz_p);
+        dataModel.setCsokkentettarAram_B(aram_b_cs);
+        dataModel.setPiaciarAram_B(aram_b_p);
     }
 }

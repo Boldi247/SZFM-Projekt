@@ -12,25 +12,31 @@ import java.io.IOException;
 
 public class OpeningSceneController {
 
-    public DataModel dataModel = new DataModel();
-
     @FXML
     public TextField piaciar_aram_b;
+    private int piaciar_aram_b_value;
 
     @FXML
     public TextField csokkentettar_aram_b;
+    private int csokkentettar_aram_b_value;
 
     @FXML
     public TextField csokkentettar_aram;
+    private int csokkentettar_aram_value;
 
     @FXML
     public TextField piaciar_aram;
+    private int piaciar_aram_value;
 
     @FXML
     public TextField csokkentettar_gaz;
+    private int csokkentettar_gaz_value;
 
     @FXML
     public TextField piaciar_gaz;
+    private int piaciar_gaz_value;
+
+    private SceneController sceneController = new SceneController();
 
     @FXML
     void onExit() {
@@ -39,28 +45,27 @@ public class OpeningSceneController {
 
     @FXML
     public void onNext(ActionEvent event) throws IOException {
+        sceneController.sceneSetter(event, sceneController.getMAINSCENEPATH());
+        MainController mainController = sceneController.getFxmlLoader().getController();
+
 
         try {
             if (csokkentettar_aram.getText().isEmpty() || piaciar_aram.getText().isEmpty() || csokkentettar_gaz.getText().isEmpty() || piaciar_gaz.getText().isEmpty() || piaciar_aram_b.getText().isEmpty() || csokkentettar_aram_b.getText().isEmpty()) {
-                saveInput(dataModel.getDef_aram_p(),dataModel.getDef_aram_cs(), dataModel.getDef_aram_b_p(), dataModel.getDef_aram_b_cs(), dataModel.getDef_gaz_p(), dataModel.getDef_gaz_cs());
+
+                mainController.saveDataFromFirstScene(DataModel.def_aram_p, DataModel.def_aram_cs, DataModel.def_aram_b_p, DataModel.def_aram_b_cs, DataModel.def_gaz_p, DataModel.def_gaz_cs);
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Egy vagy több mezőt üresen hagyott: A program alapértelmezett értékekkel fog számolni!");
                 alert.setTitle("Alapértelmezett értékek");
                 alert.setResizable(false);
                 alert.show();
-
-                System.out.println(dataModel.getCsokkentettarAram());
-                System.out.println(dataModel.getPiaciarAram());
-                System.out.println(dataModel.getCsokkentettarAram_B());
-                System.out.println(dataModel.getPiaciarAram_B());
-                System.out.println(dataModel.getCsokkentettarGaz());
-                System.out.println(dataModel.getPiaciarGaz());
             }
             else {
-                saveInput();
+                setValues();
+                mainController.saveDataFromFirstScene(piaciar_aram_value, csokkentettar_aram_value, piaciar_aram_b_value, csokkentettar_aram_b_value, piaciar_gaz_value, csokkentettar_gaz_value);
             }
-            SceneController.sceneSetter(event, SceneController.MAINSCENEPATH);
-        }catch (NumberFormatException e) {
+
+        } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Számot adj meg!");
             alert.setTitle("Hiba");
@@ -69,21 +74,12 @@ public class OpeningSceneController {
         }
     }
 
-    private void saveInput() {
-        dataModel.setCsokkentettarAram(Integer.parseInt(csokkentettar_aram.getText()));
-        dataModel.setPiaciarAram(Integer.parseInt(piaciar_aram.getText()));
-        dataModel.setCsokkentettarGaz(Integer.parseInt(csokkentettar_gaz.getText()));
-        dataModel.setPiaciarGaz(Integer.parseInt(piaciar_gaz.getText()));
-        dataModel.setCsokkentettarAram_B(Integer.parseInt(csokkentettar_aram_b.getText()));
-        dataModel.setPiaciarAram_B(Integer.parseInt(piaciar_aram_b.getText()));
-    }
-
-    private void saveInput(int def_aram_p, int def_aram_cs, int def_aram_b_p, int def_aram_b_cs, int def_gaz_p, int def_gaz_cs) {
-        dataModel.setCsokkentettarAram(def_aram_cs);
-        dataModel.setPiaciarAram(def_aram_p);
-        dataModel.setCsokkentettarGaz(def_gaz_cs);
-        dataModel.setPiaciarGaz(def_gaz_p);
-        dataModel.setCsokkentettarAram_B(def_aram_b_cs);
-        dataModel.setPiaciarAram_B(def_aram_b_p);
+    private void setValues() {
+        piaciar_aram_b_value = Integer.parseInt(piaciar_aram_b.getText());
+        csokkentettar_aram_b_value = Integer.parseInt(csokkentettar_aram_b.getText());
+        csokkentettar_aram_value = Integer.parseInt(csokkentettar_aram.getText());
+        piaciar_aram_value = Integer.parseInt(piaciar_aram.getText());
+        csokkentettar_gaz_value = Integer.parseInt(csokkentettar_gaz.getText());
+        piaciar_gaz_value = Integer.parseInt(piaciar_gaz.getText());
     }
 }

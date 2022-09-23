@@ -26,7 +26,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (esti) rezsicsökkentett árrát (Ft/kWh)" />
             <TextField fx:id="csokkentettar_aram_b" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz piaci árát (Ft/m³)" />
-            <PasswordField fx:id="piaciar_gaz" />
+            <TextField fx:id="piaciar_gaz" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz rezsicsökkentett árát (Ft/m³)" />
             <TextField fx:id="csokkentettar_gaz" prefWidth="361.0" />
          </children>

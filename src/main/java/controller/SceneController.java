@@ -11,16 +11,28 @@ import java.io.IOException;
 
 public class SceneController {
 
-    public static final String OPENINGPATH = "/fxml/opening_scene.fxml";
-    public static final String MAINSCENEPATH = "/fxml/appview.fxml";
+    private String OPENINGPATH = "/fxml/opening_scene.fxml";
+    private String MAINSCENEPATH = "/fxml/appview.fxml";
+    private FXMLLoader fxmlLoader;
+
+    public String getMAINSCENEPATH() {
+        return MAINSCENEPATH;
+    }
+
+    public String getOPENINGPATH() {
+        return OPENINGPATH;
+    }
+
+    public FXMLLoader getFxmlLoader() {return fxmlLoader;}
+
+public void sceneSetter(ActionEvent event, String filename) throws IOException {
+        fxmlLoader = new FXMLLoader(getClass().getResource(filename));
+
+        Parent root = fxmlLoader.load();
 
 
-    public static void sceneSetter(ActionEvent event, String filename) throws IOException {
-        Parent root = FXMLLoader.load(SceneController.class.getResource(filename));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Rezsi kalkulátor");
-        Scene primaryScene = new Scene(root);
-        stage.setScene(primaryScene);
+        stage.setScene(new Scene(root));
         stage.show();
     }
 }

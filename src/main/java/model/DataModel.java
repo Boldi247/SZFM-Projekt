@@ -3,12 +3,12 @@ package model;
 public class DataModel {
 
     //TODO - valós árak beírása
-    private final int def_aram_p = 70;
-    private final int def_aram_cs = 37;
-    private final int def_gaz_p = 747;
-    private final int def_gaz_cs = 102;
-    private final int def_aram_b_p = 63;
-    private final int def_aram_b_cs = 23;
+    public static final int def_aram_p = 70;
+    public static final int def_aram_cs = 37;
+    public static final int def_gaz_p = 747;
+    public static final int def_gaz_cs = 102;
+    public static final int def_aram_b_p = 63;
+    public static final int def_aram_b_cs = 23;
 
     private int piaciarAram;
     private int csokkentettarAram;
@@ -23,25 +23,6 @@ public class DataModel {
     private int inputHaviGaz;
     private int inputGyerekSzam;
     private String inputHonap;
-
-    public int getDef_aram_cs() {
-        return def_aram_cs;
-    }
-    public int getDef_aram_p() {
-        return def_aram_p;
-    }
-    public int getDef_gaz_cs() {
-        return def_gaz_cs;
-    }
-    public int getDef_gaz_p() {
-        return def_gaz_p;
-    }
-    public int getDef_aram_b_cs() {
-        return def_aram_b_cs;
-    }
-    public int getDef_aram_b_p() {
-        return def_aram_b_p;
-    }
 
     public int getCsokkentettarAram() {
         return csokkentettarAram;
