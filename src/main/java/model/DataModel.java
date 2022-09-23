@@ -10,7 +10,7 @@ public class DataModel {
     public static final int def_aram_b_p = 63;
     public static final int def_aram_b_cs = 23;
 
-    public static final int DEF_NEW = 0;
+    public static final int DEF_NEW_ = 0;
 
     private int piaciarAram;
     private int csokkentettarAram;
