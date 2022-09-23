@@ -13,30 +13,30 @@ import java.io.IOException;
 public class OpeningSceneController {
 
     @FXML
-    public TextField piaciar_aram_b;
-    private int piaciar_aram_b_value;
+    public TextField aramPiaciAr_B;
+    private int aramPiaciAr_B_Ertek;
 
     @FXML
-    public TextField csokkentettar_aram_b;
-    private int csokkentettar_aram_b_value;
+    public TextField aramCsokkentettAr_B;
+    private int aramCsokkentettAr_B_Ertek;
 
     @FXML
-    public TextField csokkentettar_aram;
-    private int csokkentettar_aram_value;
+    public TextField aramPiaciAr;
+    private int aramPiaciAr_Ertek;
 
     @FXML
-    public TextField piaciar_aram;
-    private int piaciar_aram_value;
+    public TextField aramCsokkentettAr;
+    private int aramCsokkentettAr_Ertek;
 
     @FXML
-    public TextField csokkentettar_gaz;
-    private int csokkentettar_gaz_value;
+    public TextField gazPiaciAr;
+    private int gazPiaciAr_Ertek;
 
     @FXML
-    public TextField piaciar_gaz;
-    private int piaciar_gaz_value;
+    public TextField gazCsokkentettAr;
+    private int gazCsokkentettAr_Ertek;
 
-    private SceneController sceneController = new SceneController();
+    private final SceneController sceneController = new SceneController();
 
     @FXML
     void onExit() {
@@ -45,14 +45,27 @@ public class OpeningSceneController {
 
     @FXML
     public void onNext(ActionEvent event) throws IOException {
-        sceneController.sceneSetter(event, sceneController.getMAINSCENEPATH());
+        sceneController.sceneSetter(event, sceneController.getMAINSCENE_PATH());
         MainController mainController = sceneController.getFxmlLoader().getController();
 
 
         try {
-            if (csokkentettar_aram.getText().isEmpty() || piaciar_aram.getText().isEmpty() || csokkentettar_gaz.getText().isEmpty() || piaciar_gaz.getText().isEmpty() || piaciar_aram_b.getText().isEmpty() || csokkentettar_aram_b.getText().isEmpty()) {
-
-                mainController.saveDataFromFirstScene(DataModel.def_aram_p, DataModel.def_aram_cs, DataModel.def_aram_b_p, DataModel.def_aram_b_cs, DataModel.def_gaz_p, DataModel.def_gaz_cs);
+            if (
+                aramCsokkentettAr.getText().isEmpty()
+                || aramPiaciAr.getText().isEmpty()
+                || gazCsokkentettAr.getText().isEmpty()
+                || gazPiaciAr.getText().isEmpty()
+                || aramPiaciAr_B.getText().isEmpty()
+                || aramCsokkentettAr_B.getText().isEmpty()
+            ) {
+                mainController.saveDataFromFirstScene(
+                    DataModel.DEFAULT_ARAM_PIACI_AR,
+                    DataModel.DEFAULT_ARAM_CSOKKENTETT_AR,
+                    DataModel.DEFAULT_ARAM_PIACI_AR_B,
+                    DataModel.DEFAULT_ARAM_CSOKKENTETT_AR_B,
+                    DataModel.DEFAULT_GAZ_PIACI_AR,
+                    DataModel.DEFAULT_GAZ_CSOKKENTETT_AR
+                );
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Egy vagy több mezőt üresen hagyott: A program alapértelmezett értékekkel fog számolni!");
@@ -62,7 +75,15 @@ public class OpeningSceneController {
             }
             else {
                 setValues();
-                mainController.saveDataFromFirstScene(piaciar_aram_value, csokkentettar_aram_value, piaciar_aram_b_value, csokkentettar_aram_b_value, piaciar_gaz_value, csokkentettar_gaz_value);
+
+                mainController.saveDataFromFirstScene(
+                    aramPiaciAr_Ertek,
+                    aramCsokkentettAr_Ertek,
+                    aramPiaciAr_B_Ertek,
+                    aramCsokkentettAr_B_Ertek,
+                    gazPiaciAr_Ertek,
+                    gazCsokkentettAr_Ertek
+                );
             }
 
         } catch (NumberFormatException e) {
@@ -75,11 +96,11 @@ public class OpeningSceneController {
     }
 
     private void setValues() {
-        piaciar_aram_b_value = Integer.parseInt(piaciar_aram_b.getText());
-        csokkentettar_aram_b_value = Integer.parseInt(csokkentettar_aram_b.getText());
-        csokkentettar_aram_value = Integer.parseInt(csokkentettar_aram.getText());
-        piaciar_aram_value = Integer.parseInt(piaciar_aram.getText());
-        csokkentettar_gaz_value = Integer.parseInt(csokkentettar_gaz.getText());
-        piaciar_gaz_value = Integer.parseInt(piaciar_gaz.getText());
+        aramPiaciAr_Ertek = Integer.parseInt(aramPiaciAr.getText());
+        aramCsokkentettAr_Ertek = Integer.parseInt(aramCsokkentettAr.getText());
+        aramPiaciAr_B_Ertek = Integer.parseInt(aramPiaciAr_B.getText());
+        aramCsokkentettAr_B_Ertek = Integer.parseInt(aramCsokkentettAr_B.getText());
+        gazPiaciAr_Ertek = Integer.parseInt(gazPiaciAr.getText());
+        gazCsokkentettAr_Ertek = Integer.parseInt(gazCsokkentettAr.getText());
     }
 }
