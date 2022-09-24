@@ -9,12 +9,17 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
+import javafx.scene.text.Text;
 import model.DataModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+    @FXML
+    public Text aramOsszDijText;
+    @FXML
+    public Text gazOsszDijText;
     @FXML
     private TextField aramTarifa_A;
     @FXML
@@ -60,24 +65,9 @@ public class MainController implements Initializable {
 
     public void calculate(ActionEvent event) {
         if (isUserInputValid()) {
-            //TODO: Actual Calculation
-            //TODO: Remove logging
-            System.out.println(dataModel.getInputHaviAram_A());
-            System.out.println(dataModel.getInputHaviAram_B());
-            System.out.println(dataModel.getInputHaviGaz());
+            aramOsszDijText.setText(String.valueOf(dataModel.calculateAram()));
+            gazOsszDijText.setText(String.valueOf(dataModel.calculateGaz()));
 
-            System.out.println(dataModel.getInputGyerekSzam());
-            System.out.println(dataModel.getInputHonap());
-
-            System.out.println(dataModel.getAramPiaciAr());
-            System.out.println(dataModel.getAramCsokkentettAr());
-
-            System.out.println(dataModel.getAramPiaciAr_B());
-            System.out.println(dataModel.getAramCsokkentettAr_B());
-
-            System.out.println(dataModel.getGazPiaciAr());
-            System.out.println(dataModel.getGazCsokkentettAr());
-            System.out.println();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Az adatok vagy nincsenek, vagy nem jól lettek megadva!");

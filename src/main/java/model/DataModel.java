@@ -25,4 +25,69 @@ public class DataModel {
     private int inputHaviGaz;
     private int inputGyerekSzam;
     private String inputHonap;
+
+    private int aramAtlag_kWh = 210;
+    private int gazAtlag_m3 = 144;
+    private int gazAtlag_m3_nagycsalados = 194;
+    private int gazAtlagPluszGyerekenkent = 25;
+
+
+    public int calculateAram() {
+        int aTarifaFizetendo = calculateAramATarifa();
+        int bTarifaFizetendo = calculateAramBTarifa();
+
+        return aTarifaFizetendo + bTarifaFizetendo;
+    }
+    
+    private int calculateAramATarifa() {
+        if (inputHaviAram_A > aramAtlag_kWh) {
+            int res = aramAtlag_kWh * aramCsokkentettAr;
+            res = res + (inputHaviAram_A-aramAtlag_kWh)*aramPiaciAr;
+            return res;
+        }
+        else {
+            return inputHaviAram_A*aramCsokkentettAr;
+        }
+    }
+    
+    private int calculateAramBTarifa() {
+        if (inputHaviAram_B > aramAtlag_kWh) {
+            int res = aramAtlag_kWh * aramCsokkentettAr_B;
+            res = res + (inputHaviAram_B-aramAtlag_kWh)*aramPiaciAr_B;
+            return res;
+        }
+        else {
+            return inputHaviAram_B*aramCsokkentettAr_B;
+        }
+    }
+
+    public int calculateGaz() {
+        if (inputGyerekSzam < 3) {
+            if (inputHaviGaz < gazAtlag_m3) {
+                return inputHaviGaz * gazCsokkentettAr;
+            } else {
+                int diff = inputHaviGaz - gazAtlag_m3;
+
+                return (gazAtlag_m3 * gazCsokkentettAr) + (diff * gazPiaciAr);
+            }
+        }
+
+        if (inputGyerekSzam == 3) {
+            if (inputHaviGaz < gazAtlag_m3_nagycsalados) {
+                return inputHaviGaz * gazCsokkentettAr;
+            } else {
+                int diff = inputHaviGaz - gazAtlag_m3_nagycsalados;
+
+                return (gazAtlag_m3_nagycsalados * gazCsokkentettAr) + (diff * gazPiaciAr);
+            }
+        }
+
+        if (inputHaviGaz < gazAtlag_m3_nagycsalados + (inputGyerekSzam - 3) * 25) {
+            return inputHaviGaz * gazCsokkentettAr;
+        } else {
+            int diff = inputHaviGaz - (gazAtlag_m3_nagycsalados  + (inputGyerekSzam - 3) * 25);
+
+            return ((gazAtlag_m3_nagycsalados + (inputGyerekSzam - 3) * 25) * gazCsokkentettAr) + (diff * gazPiaciAr);
+        }
+    }
 }
