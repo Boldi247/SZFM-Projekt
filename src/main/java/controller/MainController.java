@@ -4,47 +4,80 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import model.DataModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable{
+public class MainController implements Initializable {
     @FXML
-    private TextField aram_a_tarifa;
+    private TextField aramTarifa_A;
     @FXML
-    private TextField aram_b_tarifa;
+    private TextField aramTarifa_B;
     @FXML
-    private TextField gaz_fogyasztas;
+    private TextField gazFogyasztas;
     @FXML
-    private Spinner<Integer> gyermek_db;
+    private Spinner<Integer> gyermekSzamValaszto;
     @FXML
-    private ChoiceBox<String> honapok;
+    private ChoiceBox<String> honapValaszto;
 
     private final DataModel dataModel = new DataModel();
 
-    private final String[] honapokContent = {"Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"};
+    private final String[] honapValasztoErtekek = {
+        "Január",
+        "Február",
+        "Március",
+        "Április",
+        "Május",
+        "Június",
+        "Július",
+        "Augusztus",
+        "Szeptember",
+        "Október",
+        "November",
+        "December"
+    };
 
+    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        honapok.getItems().addAll(honapokContent);
-        honapok.setValue(honapokContent[0]);
+        int gyermekSzamMax = 15;
 
-        SpinnerValueFactory<Integer> valueFactory =
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0,15);
-        valueFactory.setValue(0);
-        gyermek_db.setValueFactory(valueFactory);
+        honapValaszto.getItems().addAll(honapValasztoErtekek);
+        honapValaszto.setValue(honapValasztoErtekek[0]);
 
-
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, gyermekSzamMax);
+        gyermekSzamValaszto.setValueFactory(valueFactory);
     }
 
-    public void onExit(ActionEvent event) {Platform.exit();}
+    public void onExit() {
+        Platform.exit();
+    }
 
     public void calculate(ActionEvent event) {
-        if (checkIfUserGaveCorrectInput()) {
+        if (isUserInputValid()) {
+            //TODO: Actual Calculation
+            //TODO: Remove logging
+            System.out.println(dataModel.getInputHaviAram_A());
+            System.out.println(dataModel.getInputHaviAram_B());
+            System.out.println(dataModel.getInputHaviGaz());
 
-            //TODO
+            System.out.println(dataModel.getInputGyerekSzam());
+            System.out.println(dataModel.getInputHonap());
 
+            System.out.println(dataModel.getAramPiaciAr());
+            System.out.println(dataModel.getAramCsokkentettAr());
+
+            System.out.println(dataModel.getAramPiaciAr_B());
+            System.out.println(dataModel.getAramCsokkentettAr_B());
+
+            System.out.println(dataModel.getGazPiaciAr());
+            System.out.println(dataModel.getGazCsokkentettAr());
+            System.out.println();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Az adatok vagy nincsenek, vagy nem jól lettek megadva!");
@@ -54,26 +87,37 @@ public class MainController implements Initializable{
         }
     }
 
-    private boolean checkIfUserGaveCorrectInput() {
-        if (aram_a_tarifa.getText().isEmpty() || aram_b_tarifa.getText().isEmpty() || gaz_fogyasztas.getText().isEmpty()) return false;
+    private boolean isUserInputValid() {
+        if (aramTarifa_A.getText().isEmpty() || aramTarifa_B.getText().isEmpty() || gazFogyasztas.getText().isEmpty()) {
+            return false;
+        }
+
         try {
-            dataModel.setInputHaviAramA(Integer.parseInt(aram_a_tarifa.getText()));
-            dataModel.setInputHaviAramB(Integer.parseInt(aram_b_tarifa.getText()));
-            dataModel.setInputHaviGaz(Integer.parseInt(gaz_fogyasztas.getText()));
-            dataModel.setInputGyerekSzam(gyermek_db.getValue());
-            dataModel.setInputHonap(honapok.getValue());
+            dataModel.setInputHaviAram_A(Integer.parseInt(aramTarifa_A.getText()));
+            dataModel.setInputHaviAram_B(Integer.parseInt(aramTarifa_B.getText()));
+            dataModel.setInputHaviGaz(Integer.parseInt(gazFogyasztas.getText()));
+            dataModel.setInputGyerekSzam(gyermekSzamValaszto.getValue());
+            dataModel.setInputHonap(honapValaszto.getValue());
         } catch (NumberFormatException e) {
             return false;
         }
+
         return true;
     }
 
-    public void saveDataFromFirstScene(int aram_a_p, int aram_a_cs, int aram_b_p, int aram_b_cs, int gaz_p, int gaz_cs){
-        dataModel.setCsokkentettarAram(aram_a_cs);
-        dataModel.setPiaciarAram(aram_a_p);
-        dataModel.setCsokkentettarGaz(gaz_cs);
-        dataModel.setPiaciarGaz(gaz_p);
-        dataModel.setCsokkentettarAram_B(aram_b_cs);
-        dataModel.setPiaciarAram_B(aram_b_p);
+    public void saveDataFromFirstScene(
+        int aramPiaciAr,
+        int aramCsokkentettAr,
+        int aramPiaciAr_B,
+        int aramCsokkentettAr_B,
+        int gazPiaciAr,
+        int gazCsokkentettAr
+    ) {
+        dataModel.setAramPiaciAr(aramPiaciAr);
+        dataModel.setAramCsokkentettAr(aramCsokkentettAr);
+        dataModel.setAramPiaciAr_B(aramPiaciAr_B);
+        dataModel.setAramCsokkentettAr_B(aramCsokkentettAr_B);
+        dataModel.setGazPiaciAr(gazPiaciAr);
+        dataModel.setGazCsokkentettAr(gazCsokkentettAr);
     }
 }
