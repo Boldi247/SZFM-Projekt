@@ -4,14 +4,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.DataModel;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,6 +31,8 @@ public class MainController implements Initializable {
 
     private final DataModel dataModel = new DataModel();
 
+    private SceneController sceneController;
+
     private final String[] honapValasztoErtekek = {
         "Január",
         "Február",
@@ -50,6 +50,8 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        sceneController = new SceneController();
+
         int gyermekSzamMax = 15;
 
         honapValaszto.getItems().addAll(honapValasztoErtekek);

@@ -15,9 +15,10 @@ public class SceneController {
 
     private String OPENING_PATH = "/fxml/opening_scene.fxml";
     private String MAINSCENE_PATH = "/fxml/appview.fxml";
+    private String LOGIN_PATH = "/fxml/login_scene.fxml";
     private FXMLLoader fxmlLoader;
 
-public void sceneSetter(ActionEvent event, String filename) throws IOException {
+    public void sceneSetter(ActionEvent event, String filename) throws IOException {
         fxmlLoader = new FXMLLoader(getClass().getResource(filename));
 
         Parent root = fxmlLoader.load();

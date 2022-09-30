@@ -36,9 +36,6 @@
             <MenuItem mnemonicParsing="false" text="Exportálás" />
             <MenuItem mnemonicParsing="false" onAction="#onExit" text="Kilépés" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Fiók">
-            <MenuItem mnemonicParsing="false" text="Kijelentkezés" />
-        </Menu>
     </MenuBar>
     <VBox layoutX="375.0" layoutY="87.0" prefHeight="101.0" prefWidth="217.0">
         <Label text="Összes villanydíj">
@@ -61,5 +58,4 @@
         </StackPane>
     </VBox>
     <Button layoutX="452.0" layoutY="210.0" mnemonicParsing="false" onAction="#calculate" text="Számítás" />
-    <Button layoutX="400.0" layoutY="251.0" mnemonicParsing="false" text="Részletes megjelenítés (PDF)" />
 </AnchorPane>
