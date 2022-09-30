@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController" fx:id="globalStage">
     <children>
         <VBox layoutX="359.0" layoutY="141.0" prefHeight="180.0" prefWidth="240.0">
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bejelentkezés:" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév:" />
-                <TextField fx:id="login_username_field" />
+                <TextField fx:id="loginUsernameField" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó:" />
-                <TextField fx:id="login_password_field" />
+                <PasswordField fx:id="loginPasswordField" />
+                <Button mnemonicParsing="false" onAction="#onLogin" prefHeight="33.0" prefWidth="108.0" text="Bejelentkezés!" />
             </children>
         </VBox>
         <Text layoutX="197.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rezsi Kalkulátor" textAlignment="CENTER" wrappingWidth="218.4000244140625">
@@ -25,14 +24,13 @@
         <VBox layoutX="14.0" layoutY="141.0" prefHeight="180.0" prefWidth="240.0">
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Regisztráció:" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
-                <TextField fx:id="id_field" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
-                <TextField fx:id="email_field" />
+                <TextField fx:id="email" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév:" />
-                <TextField fx:id="username_field" />
+                <TextField fx:id="username" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó:" />
-                <TextField fx:id="password_field" />
+                <PasswordField fx:id="password" />
+                <Button mnemonicParsing="false" onAction="#onRegistration" prefHeight="33.0" prefWidth="108.0" text="Regisztráció!" />
             </children>
         </VBox>
     </children>
