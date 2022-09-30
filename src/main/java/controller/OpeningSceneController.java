@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import model.DataModel;
+import service.AuthenticationService;
 
 import java.io.IOException;
 
@@ -43,52 +44,56 @@ public class OpeningSceneController {
 
     @FXML
     public void onNext(ActionEvent event) throws IOException {
-        sceneController.sceneSetter(event, sceneController.getMAINSCENE_PATH());
-        MainController mainController = sceneController.getFxmlLoader().getController();
+
+        if (AuthenticationService.getInstance().isLoggedIn()) {
+
+            sceneController.sceneSetter(event, sceneController.getMAINSCENE_PATH());
+            MainController mainController = sceneController.getFxmlLoader().getController();
 
 
-        try {
-            if (
-                aramCsokkentettAr.getText().isEmpty()
-                || aramPiaciAr.getText().isEmpty()
-                || gazCsokkentettAr.getText().isEmpty()
-                || gazPiaciAr.getText().isEmpty()
-                || aramPiaciAr_B.getText().isEmpty()
-                || aramCsokkentettAr_B.getText().isEmpty()
-            ) {
-                mainController.saveDataFromFirstScene(
-                    DataModel.DEFAULT_ARAM_PIACI_AR,
-                    DataModel.DEFAULT_ARAM_CSOKKENTETT_AR,
-                    DataModel.DEFAULT_ARAM_PIACI_AR_B,
-                    DataModel.DEFAULT_ARAM_CSOKKENTETT_AR_B,
-                    DataModel.DEFAULT_GAZ_PIACI_AR,
-                    DataModel.DEFAULT_GAZ_CSOKKENTETT_AR
-                );
+            try {
+                if (
+                        aramCsokkentettAr.getText().isEmpty()
+                                || aramPiaciAr.getText().isEmpty()
+                                || gazCsokkentettAr.getText().isEmpty()
+                                || gazPiaciAr.getText().isEmpty()
+                                || aramPiaciAr_B.getText().isEmpty()
+                                || aramCsokkentettAr_B.getText().isEmpty()
+                ) {
+                    mainController.saveDataFromFirstScene(
+                            DataModel.DEFAULT_ARAM_PIACI_AR,
+                            DataModel.DEFAULT_ARAM_CSOKKENTETT_AR,
+                            DataModel.DEFAULT_ARAM_PIACI_AR_B,
+                            DataModel.DEFAULT_ARAM_CSOKKENTETT_AR_B,
+                            DataModel.DEFAULT_GAZ_PIACI_AR,
+                            DataModel.DEFAULT_GAZ_CSOKKENTETT_AR
+                    );
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Egy vagy több mezőt üresen hagyott: A program alapértelmezett értékekkel fog számolni!");
-                alert.setTitle("Alapértelmezett értékek");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Egy vagy több mezőt üresen hagyott: A program alapértelmezett értékekkel fog számolni!");
+                    alert.setTitle("Alapértelmezett értékek");
+                    alert.setResizable(false);
+                    alert.show();
+                } else {
+                    setValues();
+
+                    mainController.saveDataFromFirstScene(
+                            aramPiaciAr_Ertek,
+                            aramCsokkentettAr_Ertek,
+                            aramPiaciAr_B_Ertek,
+                            aramCsokkentettAr_B_Ertek,
+                            gazPiaciAr_Ertek,
+                            gazCsokkentettAr_Ertek
+                    );
+                }
+
+            } catch (NumberFormatException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Számot adj meg!");
+                alert.setTitle("Hiba");
                 alert.setResizable(false);
                 alert.show();
-            } else {
-                setValues();
-
-                mainController.saveDataFromFirstScene(
-                    aramPiaciAr_Ertek,
-                    aramCsokkentettAr_Ertek,
-                    aramPiaciAr_B_Ertek,
-                    aramCsokkentettAr_B_Ertek,
-                    gazPiaciAr_Ertek,
-                    gazCsokkentettAr_Ertek
-                );
             }
-
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Számot adj meg!");
-            alert.setTitle("Hiba");
-            alert.setResizable(false);
-            alert.show();
         }
     }
 
