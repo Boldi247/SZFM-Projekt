@@ -39,7 +39,7 @@ public class DataModel {
         return aTarifaFizetendo + bTarifaFizetendo;
     }
     
-    private int calculateAramATarifa() {
+    public int calculateAramATarifa() {
         if (inputHaviAram_A > aramAtlag_kWh) {
             int res = aramAtlag_kWh * aramCsokkentettAr;
             res = res + (inputHaviAram_A-aramAtlag_kWh)*aramPiaciAr;
@@ -50,7 +50,7 @@ public class DataModel {
         }
     }
     
-    private int calculateAramBTarifa() {
+    public int calculateAramBTarifa() {
         if (inputHaviAram_B > aramAtlag_kWh) {
             int res = aramAtlag_kWh * aramCsokkentettAr_B;
             res = res + (inputHaviAram_B-aramAtlag_kWh)*aramPiaciAr_B;
