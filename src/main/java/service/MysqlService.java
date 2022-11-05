@@ -18,7 +18,9 @@ public class MysqlService {
 
     public void connectToServer(){
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/rezsikalkulator?serverTimezone=UTC", "root","root");
+            // jdbc:mysql://sql11.freemysqlhosting.net:3306/?user=sql11527682
+            // jdbc:mysql://localhost:3306/rezsikalkulator?serverTimezone=UTC
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7544427", "sql7544427","gINvQ4mWJZ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -28,7 +30,7 @@ public class MysqlService {
 
     public void registration(String username, String password, String email) throws EmailNotUniqueException {
         String encodedPassword = DigestUtils.sha1Hex(password);
-        String query = "INSERT INTO `rezsikalkulator`.`users` (`username`, `email`, `passwords`) VALUES ('" + username + "', '" + email + "', '" + encodedPassword + "');";
+        String query = "INSERT INTO `users` (`username`, `email`, `passwords`) VALUES ('" + username + "', '" + email + "', '" + encodedPassword + "');";
         Statement statement = createStatement();
 
         try {
@@ -60,7 +62,7 @@ public class MysqlService {
 
             return true;
         } catch (SQLException e) {
-
+            e.printStackTrace();
             return false;
             // throw new RuntimeException(e);
         } finally {
