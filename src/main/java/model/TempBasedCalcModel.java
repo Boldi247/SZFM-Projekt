@@ -1,5 +1,9 @@
 package model;
 
+import javafx.fxml.FXML;
+
+import javax.print.DocFlavor;
+
 public class TempBasedCalcModel {
 
     //fűtőberendezési állandók
@@ -85,4 +89,43 @@ public class TempBasedCalcModel {
             else return default_lakas_20fok_1nm_nincs_kwh * szazalekosKulonbseg;
         }
     }
+
+    //visszater azzal hogy hány forint
+    private double calculateAram(double kwh) {
+        if (kwh > 2523) {
+            double rezsicokkentett = kwh - 2523;
+            return (rezsicokkentett * 36) + (kwh - rezsicokkentett) * 70.1;
+        }
+        else return kwh * 36;
+    }
+
+    private double calculateGaz(double kwh) {
+        if (kwh > 18177) {
+            double rezsicsokkentett = kwh - 18177;
+            return (rezsicsokkentett * 102) + (kwh - rezsicsokkentett) * 747;
+        }
+        else return kwh * 102;
+    }
+
+    //alkalmazzuk a fűtőberendezések állandóját | "Gáz kazán", "Fa kazán", "Konvektor", "Kandalló", "Hőszivattyú", "Elektromos hősugárzó"
+    private double allandoAlkalmazas(String futoBerendezes, double kwh) {
+        if (futoBerendezes.equals("Gáz kazán")) {
+            return kwh * GAZ_KAZAN;
+        }
+        else if (futoBerendezes.equals("Fa kazán")) {
+            return kwh * FA_KAZAN;
+        }
+        else if (futoBerendezes.equals("Konvektor")) {
+            return kwh * KONVEKTOR;
+        }
+        else if (futoBerendezes.equals("Kandalló")) {
+            return kwh * KANDALLO;
+        }
+        else if (futoBerendezes.equals("Hőszivattyú")) {
+            return kwh * HOSZIVATTYU;
+        }
+        else {return kwh * ELEKTROMOS_HOSUGARZO;}
+    }
+
+    //#TODO! megcsinálni fára --> 4.3 kWh/kg
 }
