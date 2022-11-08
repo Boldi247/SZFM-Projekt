@@ -79,7 +79,7 @@ public class LoginController {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/opening_scene.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/MethodSelector.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
