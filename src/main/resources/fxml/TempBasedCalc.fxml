@@ -20,8 +20,6 @@
             <Spinner fx:id="belteriHomerseklet" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hőszigetelés" />
             <ChoiceBox fx:id="szigeteles" prefWidth="150.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Éves fűtési órák száma" />
-            <TextField fx:id="futottOrak" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Energiahordozó" />
             <ChoiceBox fx:id="energiahordozo" prefWidth="150.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fűtőberendezés (először állítsa be az energiahordozót!)" />

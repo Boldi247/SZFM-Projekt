@@ -9,11 +9,11 @@ public class TempBasedCalcModel {
     private final double HOSZIVATTYU = 0.23;
     private final double ELEKTROMOS_HOSUGARZO = 1;
 
-    public void calculateLakas(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, int futottOrak, String energiahordozo, String futoBerendezes) {
+    public void calculateLakas(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, String energiahordozo, String futoBerendezes) {
         System.out.println("Lakás kalkuláció");
     }
 
-    public void calculateHaz(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, int futottOrak, String energiahordozo, String futoBerendezes) {
+    public void calculateHaz(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, String energiahordozo, String futoBerendezes) {
         System.out.println("Ház kalkuláció");
     }
 }

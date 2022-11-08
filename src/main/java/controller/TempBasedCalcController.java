@@ -22,8 +22,6 @@ public class TempBasedCalcController implements Initializable {
     @FXML
     public ChoiceBox<String> szigeteles;
     @FXML
-    public TextField futottOrak;
-    @FXML
     public Button calcButton;
     @FXML
     public ChoiceBox<String> energiahordozo;
@@ -40,7 +38,6 @@ public class TempBasedCalcController implements Initializable {
         szigeteles.getItems().addAll("Nincs", "Rossz", "Közepes", "Jó", "Kitűnő");
         szigeteles.setValue("Közepes");
         alapterulet.setText("100");
-        futottOrak.setText("3550");
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 30);
         belteriHomerseklet.setValueFactory(valueFactory);
         energiahordozo.getItems().addAll("Áram", "Földgáz", "Fa");
@@ -48,7 +45,7 @@ public class TempBasedCalcController implements Initializable {
     }
 
     public void calculate(ActionEvent event) {
-        if (alapterulet.getText().isEmpty() || futottOrak.getText().isEmpty() || belteriHomerseklet.getValue() == null || energiahordozo.getValue() == null || futoBerendezes.getValue() == null) {
+        if (alapterulet.getText().isEmpty() || belteriHomerseklet.getValue() == null || energiahordozo.getValue() == null || futoBerendezes.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba történt!");
@@ -66,7 +63,6 @@ public class TempBasedCalcController implements Initializable {
             }
             else {
                 int alapterulet = parseInt(this.alapterulet.getText());
-                int futottOrak = parseInt(this.futottOrak.getText());
                 int belteriHomerseklet = this.belteriHomerseklet.getValue();
                 String epuletTipus = this.epuletTipus.getValue();
                 String szigeteles = this.szigeteles.getValue();
@@ -74,9 +70,9 @@ public class TempBasedCalcController implements Initializable {
                 String futoBerendezes = this.futoBerendezes.getValue();
 
                 if (epuletTipus == "Lakás")
-                    tempBasedCalcModel.calculateLakas(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, futottOrak, energiahordozo, futoBerendezes);
+                    tempBasedCalcModel.calculateLakas(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
                 else
-                    tempBasedCalcModel.calculateHaz(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, futottOrak, energiahordozo, futoBerendezes);
+                    tempBasedCalcModel.calculateHaz(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
             }
         }
     }
