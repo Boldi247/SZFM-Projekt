@@ -1,0 +1,50 @@
+.root{
+    -fx-background-color: skyblue;
+}
+.h1{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.h2{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.p{
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-padding-after: 10px;
+}
+
+.button{
+    -fx-background-color: #89D8E1;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+.button:hover{
+    -fx-background-color: green;
+}
+
+.exit-button{
+    -fx-background-color: #89D8E1;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+}
+.exit-button:hover{
+    -fx-background-color: red;
+}
+
+

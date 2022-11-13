@@ -15,20 +15,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-    <VBox layoutX="14.0" layoutY="56.0" prefHeight="162.0" prefWidth="223.0">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi áramfogyasztás (A tarifa - &quot;nappali&quot;)" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+    <VBox layoutX="21.0" layoutY="122.0" prefHeight="162.0" prefWidth="223.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Havi áramfogyasztás (A tarifa - &quot;nappali&quot;)" />
         <TextField fx:id="aramTarifa_A" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi áramfogyasztás (B tarifa - éjjeli áram)" />
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Havi áramfogyasztás (B tarifa - éjjeli áram)" />
         <TextField fx:id="aramTarifa_B" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Havi gázfogyasztás (m³)" />
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Havi gázfogyasztás (m³)" />
         <TextField fx:id="gazFogyasztas" />
-        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Amennyiben valamit nem fogyaszt, kérem gépeljen be oda egy &quot;0&quot;-t!" textAlignment="CENTER" wrappingWidth="223.0" />
+        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Amennyiben valamit nem fogyaszt, kérem gépeljen be oda egy &quot;0&quot;-t!" textAlignment="CENTER" wrappingWidth="277.39996337890625" />
     </VBox>
-    <VBox layoutX="14.0" layoutY="263.0" prefHeight="178.0" prefWidth="223.0">
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nevelt gyermekek száma" />
+    <VBox layoutX="46.0" layoutY="319.0" prefHeight="102.0" prefWidth="158.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Nevelt gyermekek száma" />
         <Spinner fx:id="gyermekSzamValaszto" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hónap" />
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Hónap" />
         <ChoiceBox fx:id="honapValaszto" prefWidth="150.0" />
     </VBox>
     <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
@@ -37,25 +37,30 @@
             <MenuItem mnemonicParsing="false" onAction="#onExit" text="Kilépés" />
         </Menu>
     </MenuBar>
-    <VBox layoutX="375.0" layoutY="87.0" prefHeight="101.0" prefWidth="217.0">
-        <Label text="Összes villanydíj">
+    <VBox layoutX="359.0" layoutY="126.0" prefHeight="101.0" prefWidth="217.0">
+        <Label styleClass="h2" text="Összes villanydíj">
            <font>
               <Font name="System Bold" size="15.0" />
            </font>
         </Label>
         <StackPane prefHeight="5.0" prefWidth="217.0">
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Text fx:id="aramOsszDijText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="aramOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         </StackPane>
-        <Label text="Összes gázdíj">
+        <Label styleClass="h2" text="Összes gázdíj">
            <font>
               <Font name="System Bold" size="15.0" />
            </font>
         </Label>
         <StackPane prefHeight="5.0" prefWidth="217.0">
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Text fx:id="gazOsszDijText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="gazOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
         </StackPane>
     </VBox>
-    <Button layoutX="452.0" layoutY="210.0" mnemonicParsing="false" onAction="#calculate" text="Számítás" />
+    <Button layoutX="392.0" layoutY="290.0" mnemonicParsing="false" onAction="#calculate" prefHeight="58.0" prefWidth="150.0" text="Számítás" />
+   <Text fill="WHITE" layoutX="180.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Rezsi Kalkulátor" textAlignment="CENTER" wrappingWidth="240.0">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Text>
 </AnchorPane>

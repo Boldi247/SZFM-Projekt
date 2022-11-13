@@ -7,26 +7,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OpeningSceneController">
-   <Text layoutX="197.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rezsi Kalkulátor" textAlignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OpeningSceneController">
+   <Text fill="WHITE" layoutX="188.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Rezsi Kalkulátor" textAlignment="CENTER">
       <font>
          <Font size="30.0" />
       </font>
    </Text>
-   <VBox layoutX="120.0" layoutY="108.0" prefHeight="249.0" prefWidth="361.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (nappali) piaci árát (Ft/kWh)" textAlignment="CENTER" />
+   <VBox layoutX="74.0" layoutY="106.0" prefHeight="249.0" prefWidth="361.0">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a villamosenergia (nappali) piaci árát (Ft/kWh)" textAlignment="CENTER" />
       <TextField fx:id="aramPiaciAr" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (nappali) rezsicsökkentett árrát (Ft/kWh)" />
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a villamosenergia (nappali) rezsicsökkentett árrát (Ft/kWh)" />
       <TextField fx:id="aramCsokkentettAr" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (esti) piaci árát (Ft/kWh)" />
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a villamosenergia (esti) piaci árát (Ft/kWh)" />
       <TextField fx:id="aramPiaciAr_B" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a villamosenergia (esti) rezsicsökkentett árrát (Ft/kWh)" />
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a villamosenergia (esti) rezsicsökkentett árrát (Ft/kWh)" />
       <TextField fx:id="aramCsokkentettAr_B" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz piaci árát (Ft/m³)" />
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a földgáz piaci árát (Ft/m³)" />
       <TextField fx:id="gazPiaciAr" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adja meg a földgáz rezsicsökkentett árát (Ft/m³)" />
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Adja meg a földgáz rezsicsökkentett árát (Ft/m³)" />
       <TextField fx:id="gazCsokkentettAr" prefWidth="361.0" />
    </VBox>
-   <Button layoutX="143.0" layoutY="384.0" mnemonicParsing="false" onAction="#onExit" prefHeight="33.0" prefWidth="108.0" text="Kilépés" />
-   <Button layoutX="351.0" layoutY="384.0" mnemonicParsing="false" onAction="#onNext" prefHeight="33.0" prefWidth="108.0" text="Tovább" />
+   <Button layoutX="134.0" layoutY="394.0" mnemonicParsing="false" onAction="#onExit" prefHeight="33.0" prefWidth="108.0" styleClass="exit-button" text="Kilépés" />
+   <Button layoutX="351.0" layoutY="394.0" mnemonicParsing="false" onAction="#onNext" prefHeight="33.0" prefWidth="108.0" text="Tovább" />
 </AnchorPane>
