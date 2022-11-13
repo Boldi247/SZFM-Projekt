@@ -1,9 +1,5 @@
 package model;
 
-import javafx.fxml.FXML;
-
-import javax.print.DocFlavor;
-
 public class TempBasedCalcModel {
 
     //fűtőberendezési állandók
@@ -29,102 +25,127 @@ public class TempBasedCalcModel {
 
     public void calculateLakas(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, String energiahordozo, String futoBerendezes) {
         System.out.println("Lakás kalkuláció");
-        System.out.println(energiaFelhasznalasLakas(belteriHomerseklet, szigeteles, alapTerulet));
+        //System.out.println(energiaFelhasznalasLakas(belteriHomerseklet, szigeteles, alapTerulet));
+
+        System.out.println(calculatePrice(allandoAlkalmazas(futoBerendezes, energiaFelhasznalasLakas(belteriHomerseklet, szigeteles, alapTerulet)), energiahordozo));
     }
 
     public void calculateHaz(String epuletTipus, int alapTerulet, int belteriHomerseklet, String szigeteles, String energiahordozo, String futoBerendezes) {
         System.out.println("Ház kalkuláció");
-        System.out.println(energiaFelhasznalasCsaladiHaz(belteriHomerseklet, szigeteles, alapTerulet));
+        //System.out.println(energiaFelhasznalasCsaladiHaz(belteriHomerseklet, szigeteles, alapTerulet));
+
+        System.out.println(calculatePrice(allandoAlkalmazas(futoBerendezes, energiaFelhasznalasCsaladiHaz(belteriHomerseklet, szigeteles, alapTerulet)), energiahordozo));
     }
 
     //egyelőre double-lel tér vissza, de nyugodtan át lehet írni úgy is hogy kerekítsen egész számra és int legyen, úgyis csak úgy fogunk tudni vele számolni
     private double energiaFelhasznalasCsaladiHaz(int belteriHomerseklet, String szigeteles, int alapterulet) {
         if (belteriHomerseklet == 20) {
-            if (szigeteles.equals("Kitűnő")) return default_haz_20fok_1nm_kituno_kwh * alapterulet;
-            else if (szigeteles.equals("Jó")) return default_haz_20fok_1nm_jo_kwh * alapterulet;
-            else if (szigeteles.equals("Közepes")) return default_haz_20fok_1nm_kozepes_kwh * alapterulet;
-            else if (szigeteles.equals("rossz")) return default_haz_20fok_1nm_rossz_kwh * alapterulet;
-            else return default_haz_20fok_1nm_nincs_kwh * alapterulet;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_haz_20fok_1nm_kituno_kwh * alapterulet;
+                case "Jó" -> default_haz_20fok_1nm_jo_kwh * alapterulet;
+                case "Közepes" -> default_haz_20fok_1nm_kozepes_kwh * alapterulet;
+                case "rossz" -> default_haz_20fok_1nm_rossz_kwh * alapterulet;
+                default -> default_haz_20fok_1nm_nincs_kwh * alapterulet;
+            };
         }
         else if (belteriHomerseklet > 20) {
             double szazalekosKulonbseg = 1d + ((((double) belteriHomerseklet - 20d) * 6d)/100d);
-            if (szigeteles.equals("Kitűnő")) return default_haz_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("Jó")) return default_haz_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("Közepes")) return default_haz_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("rossz")) return default_haz_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
-            else return default_haz_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_haz_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
+                case "Jó" -> default_haz_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
+                case "Közepes" -> default_haz_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
+                case "rossz" -> default_haz_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
+                default -> default_haz_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            };
         }
         else {
             double szazalekosKulonbseg = 1d - (((20d - (double) belteriHomerseklet) * 6d)/100d);
-            if (szigeteles.equals("Kitűnő")) return default_haz_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("Jó")) return default_haz_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("Közepes")) return default_haz_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
-            else if (szigeteles.equals("rossz")) return default_haz_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
-            else return default_haz_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_haz_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
+                case "Jó" -> default_haz_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
+                case "Közepes" -> default_haz_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
+                case "rossz" -> default_haz_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
+                default -> default_haz_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            };
         }
     }
 
     private double energiaFelhasznalasLakas(int belteriHomerseklet, String szigeteles, int alapterulet) {
         if (belteriHomerseklet == 20) {
-            if (szigeteles.equals("Kitűnő")) return default_lakas_20fok_1nm_kituno_kwh;
-            else if (szigeteles.equals("Jó")) return default_lakas_20fok_1nm_jo_kwh;
-            else if (szigeteles.equals("Közepes")) return default_lakas_20fok_1nm_kozepes_kwh;
-            else if (szigeteles.equals("rossz")) return default_lakas_20fok_1nm_rossz_kwh;
-            else return default_lakas_20fok_1nm_nincs_kwh;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_lakas_20fok_1nm_kituno_kwh * alapterulet;
+                case "Jó" -> default_lakas_20fok_1nm_jo_kwh * alapterulet;
+                case "Közepes" -> default_lakas_20fok_1nm_kozepes_kwh * alapterulet;
+                case "rossz" -> default_lakas_20fok_1nm_rossz_kwh * alapterulet;
+                default -> default_lakas_20fok_1nm_nincs_kwh * alapterulet;
+            };
         }
         else if (belteriHomerseklet > 20) {
             double szazalekosKulonbseg = 1d + ((((double) belteriHomerseklet - 20d) * 6d)/100d);
-            if (szigeteles.equals("Kitűnő")) return default_lakas_20fok_1nm_kituno_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("Jó")) return default_lakas_20fok_1nm_jo_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("Közepes")) return default_lakas_20fok_1nm_kozepes_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("rossz")) return default_lakas_20fok_1nm_rossz_kwh * szazalekosKulonbseg;
-            else return default_lakas_20fok_1nm_nincs_kwh * szazalekosKulonbseg;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_lakas_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
+                case "Jó" -> default_lakas_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
+                case "Közepes" -> default_lakas_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
+                case "rossz" -> default_lakas_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
+                default -> default_lakas_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            };
         }
         else {
             double szazalekosKulonbseg = 1d - (((20d - (double) belteriHomerseklet) * 6d)/100d);
-            if (szigeteles.equals("Kitűnő")) return default_lakas_20fok_1nm_kituno_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("Jó")) return default_lakas_20fok_1nm_jo_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("Közepes")) return default_lakas_20fok_1nm_kozepes_kwh * szazalekosKulonbseg;
-            else if (szigeteles.equals("rossz")) return default_lakas_20fok_1nm_rossz_kwh * szazalekosKulonbseg;
-            else return default_lakas_20fok_1nm_nincs_kwh * szazalekosKulonbseg;
+            return switch (szigeteles) {
+                case "Kitűnő" -> default_lakas_20fok_1nm_kituno_kwh * szazalekosKulonbseg * alapterulet;
+                case "Jó" -> default_lakas_20fok_1nm_jo_kwh * szazalekosKulonbseg * alapterulet;
+                case "Közepes" -> default_lakas_20fok_1nm_kozepes_kwh * szazalekosKulonbseg * alapterulet;
+                case "rossz" -> default_lakas_20fok_1nm_rossz_kwh * szazalekosKulonbseg * alapterulet;
+                default -> default_lakas_20fok_1nm_nincs_kwh * szazalekosKulonbseg * alapterulet;
+            };
         }
     }
 
     //visszater azzal hogy hány forint
     private double calculateAram(double kwh) {
         if (kwh > 2523) {
-            double rezsicokkentett = kwh - 2523;
-            return (rezsicokkentett * 36) + (kwh - rezsicokkentett) * 70.1;
+            double piaci_aras_kwh = kwh - 2523;
+            return (piaci_aras_kwh * 70.1) + ((kwh-piaci_aras_kwh) * 36);
         }
         else return kwh * 36;
     }
 
     private double calculateGaz(double kwh) {
         if (kwh > 18177) {
-            double rezsicsokkentett = kwh - 18177;
-            return (rezsicsokkentett * 102) + (kwh - rezsicsokkentett) * 747;
+            double piaci_aras_kwh = kwh - 18177;
+            return (piaci_aras_kwh * 747) + ((kwh - piaci_aras_kwh) * 102);
         }
         else return kwh * 102;
     }
 
+    private double calculateFa(double kwh) {
+        //1 m3 fa kb --> 33000 Ft
+        return (kwh/4.3/1000)*1.2*33000;
+    }
+
+    private int calculatePrice(double kwh, String energiahordozo) {
+        if (energiahordozo.equals("Áram")) {
+            return (int) calculateAram(kwh);
+        }
+        else if (energiahordozo.equals("Földgáz")) {
+            return (int) calculateGaz(kwh);
+        }
+        else {
+            return (int) calculateFa(kwh);
+        }
+    }
+
     //alkalmazzuk a fűtőberendezések állandóját | "Gáz kazán", "Fa kazán", "Konvektor", "Kandalló", "Hőszivattyú", "Elektromos hősugárzó"
     private double allandoAlkalmazas(String futoBerendezes, double kwh) {
-        if (futoBerendezes.equals("Gáz kazán")) {
-            return kwh * GAZ_KAZAN;
-        }
-        else if (futoBerendezes.equals("Fa kazán")) {
-            return kwh * FA_KAZAN;
-        }
-        else if (futoBerendezes.equals("Konvektor")) {
-            return kwh * KONVEKTOR;
-        }
-        else if (futoBerendezes.equals("Kandalló")) {
-            return kwh * KANDALLO;
-        }
-        else if (futoBerendezes.equals("Hőszivattyú")) {
-            return kwh * HOSZIVATTYU;
-        }
-        else {return kwh * ELEKTROMOS_HOSUGARZO;}
+        return switch (futoBerendezes) {
+            case "Gáz kazán" -> kwh * GAZ_KAZAN;
+            case "Fa kazán" -> kwh * FA_KAZAN;
+            case "Konvektor" -> kwh * KONVEKTOR;
+            case "Kandalló" -> kwh * KANDALLO;
+            case "Hőszivattyú" -> kwh * HOSZIVATTYU;
+            default -> kwh * ELEKTROMOS_HOSUGARZO;
+        };
     }
 
     //#TODO! megcsinálni fára --> 4.3 kWh/kg
