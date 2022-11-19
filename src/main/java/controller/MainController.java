@@ -1,15 +1,15 @@
 package controller;
 
+import com.itextpdf.text.DocumentException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import model.DataModel;
+import exceptions.model.DataModel;
 
-import javax.swing.*;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,19 +33,21 @@ public class MainController implements Initializable {
 
     private SceneController sceneController;
 
+    private PdfCreatorController pdfCreatorController = new PdfCreatorController();
+
     private final String[] honapValasztoErtekek = {
-        "Január",
-        "Február",
-        "Március",
-        "Április",
-        "Május",
-        "Június",
-        "Július",
-        "Augusztus",
-        "Szeptember",
-        "Október",
-        "November",
-        "December"
+            "Január",
+            "Február",
+            "Március",
+            "Április",
+            "Május",
+            "Június",
+            "Július",
+            "Augusztus",
+            "Szeptember",
+            "Október",
+            "November",
+            "December"
     };
 
     @Override
@@ -65,11 +67,15 @@ public class MainController implements Initializable {
         Platform.exit();
     }
 
-    public void calculate(ActionEvent event) {
+    public void calculate(ActionEvent event) throws DocumentException, FileNotFoundException {
         if (isUserInputValid()) {
-            aramOsszDijText.setText(String.valueOf(dataModel.calculateAram()));
-            gazOsszDijText.setText(String.valueOf(dataModel.calculateGaz()));
+            String aramOsszDij = String.valueOf(dataModel.calculateAram());
+            String gazOsszDij = String.valueOf(dataModel.calculateGaz());
 
+            aramOsszDijText.setText(aramOsszDij + " Ft");
+            gazOsszDijText.setText(gazOsszDij + " Ft");
+
+            pdfCreatorController.createAramGazPdf(aramOsszDij, gazOsszDij);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Az adatok vagy nincsenek, vagy nem jól lettek megadva!");
@@ -80,9 +86,14 @@ public class MainController implements Initializable {
     }
 
     private boolean isUserInputValid() {
-        if (aramTarifa_A.getText().isEmpty() || aramTarifa_B.getText().isEmpty() || gazFogyasztas.getText().isEmpty()) {
-            return false;
-        }
+        if (aramTarifa_A.getText().isEmpty())
+            aramTarifa_A.setText("0");
+
+        if (aramTarifa_B.getText().isEmpty())
+            aramTarifa_B.setText("0");
+
+        if (gazFogyasztas.getText().isEmpty())
+            gazFogyasztas.setText("0");
 
         try {
             dataModel.setInputHaviAram_A(Integer.parseInt(aramTarifa_A.getText()));
@@ -98,12 +109,12 @@ public class MainController implements Initializable {
     }
 
     public void saveDataFromFirstScene(
-        int aramPiaciAr,
-        int aramCsokkentettAr,
-        int aramPiaciAr_B,
-        int aramCsokkentettAr_B,
-        int gazPiaciAr,
-        int gazCsokkentettAr
+            int aramPiaciAr,
+            int aramCsokkentettAr,
+            int aramPiaciAr_B,
+            int aramCsokkentettAr_B,
+            int gazPiaciAr,
+            int gazCsokkentettAr
     ) {
         dataModel.setAramPiaciAr(aramPiaciAr);
         dataModel.setAramCsokkentettAr(aramCsokkentettAr);

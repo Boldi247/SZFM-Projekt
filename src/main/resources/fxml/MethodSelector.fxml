@@ -6,17 +6,15 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MethodSelectorController">
-   <children>
-      <Button layoutX="437.0" layoutY="160.0" mnemonicParsing="false" onAction="#normal" text="Normál" />
-      <Button layoutX="84.0" layoutY="160.0" mnemonicParsing="false" onAction="#hofokAlapu" text="Hőfok alapú" />
-      <Button layoutX="263.0" layoutY="326.0" mnemonicParsing="false" onAction="#onExit" styleClass="exit-button" text="Kilépés" />
-      <Text fill="WHITE" layoutX="163.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h2" text="Válassz egy számítási módot!" />
-      <Text fill="WHITE" layoutX="50.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Számítsa ki rezsijét egy fentartott hőfok és a főtési módja szerint" textAlignment="CENTER" wrappingWidth="179.36602783203125" />
-      <Text fill="WHITE" layoutX="395.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Számítsa ki a rezsijét fogyaztása szerint" textAlignment="CENTER" wrappingWidth="162.232421875" />
-      <Text fill="WHITE" layoutX="182.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Rezsi Kalkulátor" textAlignment="CENTER" wrappingWidth="235.2000732421875">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-   </children>
+    <Button layoutX="437.0" layoutY="160.0" mnemonicParsing="false" onAction="#normal" text="Normál" />
+    <Button layoutX="84.0" layoutY="160.0" mnemonicParsing="false" onAction="#hofokAlapu" text="Hőfok alapú" />
+    <Button layoutX="263.0" layoutY="326.0" mnemonicParsing="false" onAction="#onExit" styleClass="exit-button" text="Kilépés" />
+    <Text fill="WHITE" layoutX="163.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h2" text="Válassz egy számítási módot!" />
+    <Text fill="WHITE" layoutX="50.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Számítsa ki rezsijét egy fentartott hőfok és a fűtési módja szerint" textAlignment="CENTER" wrappingWidth="179.36602783203125" />
+    <Text fill="WHITE" layoutX="395.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Számítsa ki a rezsijét fogyasztása szerint" textAlignment="CENTER" wrappingWidth="162.232421875" />
+    <Text fill="WHITE" layoutX="182.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="Rezsi Kalkulátor" textAlignment="CENTER" wrappingWidth="235.2000732421875">
+     <font>
+        <Font size="30.0" />
+     </font>
+    </Text>
 </AnchorPane>

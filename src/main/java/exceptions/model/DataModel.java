@@ -1,4 +1,4 @@
-package model;
+package exceptions.model;
 
 import lombok.Data;
 

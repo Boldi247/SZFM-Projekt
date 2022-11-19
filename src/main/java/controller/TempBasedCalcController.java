@@ -1,12 +1,15 @@
 package controller;
 
+import com.itextpdf.text.DocumentException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import model.TempBasedCalcModel;
+import exceptions.model.TempBasedCalcModel;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
@@ -41,27 +44,24 @@ public class TempBasedCalcController implements Initializable {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 30);
         belteriHomerseklet.setValueFactory(valueFactory);
         energiahordozo.getItems().addAll("Áram", "Földgáz", "Fa");
-        futoBerendezes.getItems().addAll("Gáz kazán", "Fa kazán", "Konvektor", "Kandalló", "Hőszivattyú", "Elektromos hősugárzó");
+        futoBerendezes.getItems().addAll("Gázkazán", "Fakazán", "Konvektor", "Kandalló", "Hőszivattyú", "Elektromos hősugárzó");
     }
 
-    public void calculate(ActionEvent event) {
+    public void calculate(ActionEvent event) throws DocumentException, FileNotFoundException {
         if (alapterulet.getText().isEmpty() || belteriHomerseklet.getValue() == null || energiahordozo.getValue() == null || futoBerendezes.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba történt!");
             alert.setContentText("Nem adott meg minden adatot!");
             alert.showAndWait();
-        }
-
-        else {
-            if (!checkIfInputIsCorrect()){
+        } else {
+            if (!isInputCorrect()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Hiba");
                 alert.setHeaderText("Hiba történt!");
                 alert.setContentText("Nem megfelelő energiahordozó-fűtőberendezés párt adott meg!");
                 alert.showAndWait();
-            }
-            else {
+            } else {
                 int alapterulet = parseInt(this.alapterulet.getText());
                 int belteriHomerseklet = this.belteriHomerseklet.getValue();
                 String epuletTipus = this.epuletTipus.getValue();
@@ -69,7 +69,7 @@ public class TempBasedCalcController implements Initializable {
                 String energiahordozo = this.energiahordozo.getValue();
                 String futoBerendezes = this.futoBerendezes.getValue();
 
-                if (epuletTipus == "Lakás")
+                if (Objects.equals(epuletTipus, "Lakás"))
                     tempBasedCalcModel.calculateLakas(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
                 else
                     tempBasedCalcModel.calculateHaz(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
@@ -77,23 +77,16 @@ public class TempBasedCalcController implements Initializable {
         }
     }
 
-    private boolean checkIfInputIsCorrect()
-    {
-        if (energiahordozo.getValue().equals("Áram"))
-        {
-            if (futoBerendezes.getValue().equals("Hőszivattyú") || futoBerendezes.getValue().equals("Elektromos hősugárzó")) return true;
-            else return false;
-        }
-        else if (energiahordozo.getValue().equals("Földgáz"))
-        {
-            if (futoBerendezes.getValue().equals("Gáz kazán") || futoBerendezes.getValue().equals("Konvektor")) return true;
-            else return false;
-        }
-        else if (energiahordozo.getValue().equals("Fa"))
-        {
-            if (futoBerendezes.getValue().equals("Fa kazán") || futoBerendezes.getValue().equals("Kandalló")) return true;
-            else return false;
-        }
-        else return false;
+    private boolean isInputCorrect() {
+        return switch (energiahordozo.getValue()) {
+            case "Áram" ->
+                    futoBerendezes.getValue().equals("Hőszivattyú") || futoBerendezes.getValue().equals("Elektromos hősugárzó");
+            case "Hőszivattyú" ->
+                    futoBerendezes.getValue().equals("Gázkazán") || futoBerendezes.getValue().equals("Konvektor");
+            case "Fa" ->
+                    futoBerendezes.getValue().equals("Fakazán") || futoBerendezes.getValue().equals("Kandalló");
+            default ->
+                    false;
+        };
     }
 }
