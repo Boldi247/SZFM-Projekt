@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import model.DataModel;
+import exceptions.model.DataModel;
 import service.AuthenticationService;
 
 import java.io.IOException;
@@ -89,7 +89,7 @@ public class OpeningSceneController {
 
             } catch (NumberFormatException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Számot adj meg!");
+                alert.setContentText("Számot adjon meg!");
                 alert.setTitle("Hiba");
                 alert.setResizable(false);
                 alert.show();
