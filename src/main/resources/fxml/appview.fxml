@@ -35,7 +35,7 @@
         </Label>
         <StackPane prefHeight="5.0" prefWidth="217.0">
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Text fx:id="aramOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="aramOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Text" />
         </StackPane>
         <Label styleClass="h2" text="Összes gázdíj">
            <font>
@@ -44,7 +44,7 @@
         </Label>
         <StackPane prefHeight="5.0" prefWidth="217.0">
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-            <Text fx:id="gazOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="gazOsszDijText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Text" />
         </StackPane>
     </VBox>
     <Button layoutX="392.0" layoutY="290.0" mnemonicParsing="false" onAction="#calculate" prefHeight="58.0" prefWidth="150.0" text="Számítás" />
