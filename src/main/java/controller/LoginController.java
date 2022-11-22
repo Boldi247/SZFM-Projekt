@@ -40,12 +40,17 @@ public class LoginController {
     @FXML
     private PasswordField loginPasswordField;
 
+    private static String passwordOfUser;
+    public static String getPasswordOfUser() {return passwordOfUser;}
+
     public void onLogin() {
         mysqlService.connectToServer();
         if (mysqlService.login(loginUsernameField.getText(), loginPasswordField.getText())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("SIKERES BEJELENTKEZÉS");
             alert.show();
+
+            passwordOfUser = loginPasswordField.getText();
 
             showLoggedInScreen();
 

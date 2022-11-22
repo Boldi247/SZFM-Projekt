@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import exceptions.model.TempBasedCalcModel;
+import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -30,6 +31,8 @@ public class TempBasedCalcController implements Initializable {
     public ChoiceBox<String> energiahordozo;
     @FXML
     public ChoiceBox<String> futoBerendezes;
+    @FXML
+    public Text osszeg;
 
     TempBasedCalcModel tempBasedCalcModel = new TempBasedCalcModel();
 
@@ -73,6 +76,7 @@ public class TempBasedCalcController implements Initializable {
                     tempBasedCalcModel.calculateLakas(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
                 else
                     tempBasedCalcModel.calculateHaz(epuletTipus, alapterulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
+                osszeg.setText(Integer.toString(tempBasedCalcModel.getOsszErtek()) + " Ft");
             }
         }
     }

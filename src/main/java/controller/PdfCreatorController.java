@@ -25,7 +25,7 @@ public class PdfCreatorController {
             String futoBerendezes
     ) throws FileNotFoundException, DocumentException {
         Document document = new Document();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HHmmss");
+        SimpleDateFormat formatter = new SimpleDateFormat(" yyyyMMdd-HHmmss");
         Date date = new Date();
         PdfWriter.getInstance(document, new FileOutputStream(String.format("haz-szamitas-%s.pdf", formatter.format(date))));
 
@@ -48,7 +48,6 @@ public class PdfCreatorController {
         table.addCell(String.valueOf(energiahordozo));
         table.addCell("Fütöberendezés");
         table.addCell(String.valueOf(futoBerendezes));
-
         document.add(table);
         document.close();
     }

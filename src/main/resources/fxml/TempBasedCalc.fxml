@@ -36,7 +36,7 @@
    <StackPane layoutX="361.0" layoutY="160.0" prefHeight="26.0" prefWidth="200.0">
       <children>
          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9bceff69" height="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" text="Text" />
+         <Text fx:id="osszeg" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="p" />
       </children>
    </StackPane>
    <Label layoutX="358.0" layoutY="118.0" styleClass="h2" text="Az összes díj:" />
