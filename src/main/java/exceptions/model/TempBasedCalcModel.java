@@ -100,8 +100,8 @@ public class TempBasedCalcModel {
     }
 
     private double calculateGaz(double kwh) {
-        if (kwh > 18177) {
-            double piaci_aras_kwh = kwh - 18177;
+        if (kwh > 1723) {
+            double piaci_aras_kwh = kwh - 1723;
             return (piaci_aras_kwh * 747) + ((kwh - piaci_aras_kwh) * 102);
         } else return kwh * 102;
     }

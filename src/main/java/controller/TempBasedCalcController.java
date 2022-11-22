@@ -81,7 +81,7 @@ public class TempBasedCalcController implements Initializable {
         return switch (energiahordozo.getValue()) {
             case "Áram" ->
                     futoBerendezes.getValue().equals("Hőszivattyú") || futoBerendezes.getValue().equals("Elektromos hősugárzó");
-            case "Hőszivattyú" ->
+            case "Földgáz" ->
                     futoBerendezes.getValue().equals("Gázkazán") || futoBerendezes.getValue().equals("Konvektor");
             case "Fa" ->
                     futoBerendezes.getValue().equals("Fakazán") || futoBerendezes.getValue().equals("Kandalló");
