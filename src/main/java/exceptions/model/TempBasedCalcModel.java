@@ -56,8 +56,7 @@ public class TempBasedCalcModel {
             String futoBerendezes
     ) throws DocumentException, FileNotFoundException {
         if (!energiahordozo.equals("Földgáz")) {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, energiaFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);}
-        else {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, gazFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);
-            System.out.println("IDE JUTOTTAM");}
+        else {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, gazFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);}
 
         pdfCreatorController.createPdf(osszErtek, epuletTipus, alapTerulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
     }
@@ -71,8 +70,7 @@ public class TempBasedCalcModel {
             String futoBerendezes
     ) throws FileNotFoundException, DocumentException {
         if (!energiahordozo.equals("Földgáz")) {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, energiaFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);}
-        else {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, gazFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);
-            System.out.println("IDE JUTOTTAM");}
+        else {osszErtek = calculatePrice(allandoAlkalmazas(futoBerendezes, gazFelhasznalas(belteriHomerseklet, szigeteles, alapTerulet, epuletTipus)), energiahordozo);}
 
         pdfCreatorController.createPdf(osszErtek, epuletTipus, alapTerulet, belteriHomerseklet, szigeteles, energiahordozo, futoBerendezes);
     }
