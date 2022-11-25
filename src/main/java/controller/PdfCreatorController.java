@@ -10,11 +10,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.stream.Stream;
 
 public class PdfCreatorController {
+    private String ownerPassword = "borsodmegye12";
+
     public void createPdf(
             int osszErtek,
             String epuletTipus,
@@ -27,7 +30,9 @@ public class PdfCreatorController {
         Document document = new Document();
         SimpleDateFormat formatter = new SimpleDateFormat(" yyyyMMdd-HHmmss");
         Date date = new Date();
-        PdfWriter.getInstance(document, new FileOutputStream(String.format("haz-szamitas-%s.pdf", formatter.format(date))));
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(String.format("haz-szamitas-%s.pdf", formatter.format(date))));
+
+        pdfWriter.setEncryption(LoginController.getPasswordOfUser().getBytes(StandardCharsets.UTF_8), ownerPassword.getBytes(StandardCharsets.UTF_8), PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_256);
 
         document.open();
 
