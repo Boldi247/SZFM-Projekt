@@ -30,7 +30,7 @@ public class PdfCreatorController {
         Document document = new Document();
         SimpleDateFormat formatter = new SimpleDateFormat(" yyyyMMdd-HHmmss");
         Date date = new Date();
-        PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(String.format("haz-szamitas-%s.pdf", formatter.format(date))));
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(String.format(LoginController.getNameOfUser() + "-haz-szamitas-%s.pdf", formatter.format(date))));
 
         pdfWriter.setEncryption(LoginController.getPasswordOfUser().getBytes(StandardCharsets.UTF_8), ownerPassword.getBytes(StandardCharsets.UTF_8), PdfWriter.ALLOW_PRINTING, PdfWriter.ENCRYPTION_AES_256);
 
@@ -75,7 +75,7 @@ public class PdfCreatorController {
         Document document = new Document();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HHmmss");
         Date date = new Date();
-        PdfWriter.getInstance(document, new FileOutputStream(String.format("villany-gaz-szamitas-%s.pdf", formatter.format(date))));
+        PdfWriter.getInstance(document, new FileOutputStream(String.format(LoginController.getNameOfUser() + "-illany-gaz-szamitas-%s.pdf", formatter.format(date))));
 
         document.open();
 

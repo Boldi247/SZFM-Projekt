@@ -41,7 +41,9 @@ public class LoginController {
     private PasswordField loginPasswordField;
 
     private static String passwordOfUser;
+    private static String nameOfUser;
     public static String getPasswordOfUser() {return passwordOfUser;}
+    public static String getNameOfUser() {return nameOfUser;}
 
     public void onLogin() {
         mysqlService.connectToServer();
@@ -51,6 +53,7 @@ public class LoginController {
             alert.show();
 
             passwordOfUser = loginPasswordField.getText();
+            nameOfUser = loginUsernameField.getText();
 
             showLoggedInScreen();
 
