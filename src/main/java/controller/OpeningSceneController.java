@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import exceptions.model.DataModel;
+import model.DataModel;
 import service.AuthenticationService;
 
 import java.io.IOException;

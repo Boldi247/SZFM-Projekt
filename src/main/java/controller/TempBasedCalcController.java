@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import exceptions.model.TempBasedCalcModel;
+import model.TempBasedCalcModel;
 import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package exceptions.model;
+package model;
 
 import com.itextpdf.text.DocumentException;
 import controller.PdfCreatorController;

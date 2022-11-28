@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import exceptions.model.DataModel;
+import model.DataModel;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
